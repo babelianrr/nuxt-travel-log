@@ -8,6 +8,7 @@ export default withNuxt(
         {
             type: "app",
             vue: true,
+            yaml: false,
             typescript: true,
             formatters: true,
             stylistic: {
