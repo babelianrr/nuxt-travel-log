@@ -18,6 +18,7 @@ export default withNuxt(
                 semi: true,
                 quotes: "double",
             },
+            ignores: ["**/lib/db/meta/*", "**/lib/db/*.sql"],
         },
         {
             rules: {
