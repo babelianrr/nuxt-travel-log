@@ -18,6 +18,7 @@
         "@nuxt/icon": "^1.13.0",
         "@nuxtjs/color-mode": "^3.5.2",
         "@tailwindcss/vite": "^4.1.10",
+        "better-auth": "^1.2.9",
         "drizzle-orm": "^0.44.2",
         "eslint": "^9.28.0",
         "nuxt": "^3.17.5",
