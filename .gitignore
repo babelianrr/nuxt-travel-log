@@ -25,3 +25,6 @@ logs
 
 # Local database
 local.db*
+
+# Chrome Devtools
+.well-known
