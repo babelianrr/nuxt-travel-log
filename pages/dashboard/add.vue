@@ -27,7 +27,6 @@ const onSubmit = handleSubmit(async (values) => {
         navigateTo("/dashboard");
     }
     catch (e) {
-        console.log("ERROR HERE");
         const error = e as FetchError;
         if (error.data?.data) {
             setErrors(error.data?.data);
