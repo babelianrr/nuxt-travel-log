@@ -23,3 +23,5 @@ export const InsertLocation = z.object({
     lat: z.number().min(-90).max(90),
     long: z.number().min(-180).max(180),
 });
+
+export type InsertLocation = z.infer<typeof InsertLocation>;
