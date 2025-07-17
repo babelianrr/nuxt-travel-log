@@ -1,1 +1,3 @@
-export const CENTER_JKT = { lon: 106.8229, lat: -6.1944 };
+import type { LngLatLike } from "maplibre-gl";
+
+export const CENTER_JKT = [106.8229, -6.1944] as LngLatLike;
