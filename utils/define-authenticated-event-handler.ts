@@ -8,7 +8,7 @@ type AuthenticatedEvent = H3Event & {
     };
 };
 
-export default function defineAuthenticatedEventHandle<T>(
+export default function defineAuthenticatedEventHandler<T>(
     handler: (event: AuthenticatedEvent) => T,
 ) {
     return defineEventHandler(async (event) => {
