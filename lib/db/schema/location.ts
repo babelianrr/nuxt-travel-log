@@ -35,3 +35,4 @@ export type SelectLocation = typeof location.$inferSelect;
 export type SelectLocationWithLogs = SelectLocation & {
     locationLogs: SelectLocationLog[];
 };
+export type InsertLocationInitialValues = InsertLocation | null | undefined;
