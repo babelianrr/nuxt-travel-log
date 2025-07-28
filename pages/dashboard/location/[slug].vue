@@ -1,14 +1,9 @@
 <script lang="ts" setup>
-const route = useRoute();
-const mapStore = useMapStore();
+const locationStore = useLocationStore();
+const { currentLocation: location, currentLocationStatus: status, currentLocationError: error } = storeToRefs(locationStore);
 
-const { slug } = route.params;
-const { data: location, status, error } = await useFetch(`/api/locations/${slug}`, { lazy: true });
-
-effect(() => {
-    if (location.value) {
-        mapStore.mapPoints = [location.value];
-    }
+onMounted(() => {
+    locationStore.refreshCurrentLocation();
 });
 </script>
 
@@ -29,7 +24,7 @@ effect(() => {
             </p>
             <button class="btn btn-primary mt-2">
                 <Icon name="tabler:map-pin-plus" size="24" />
-                Add Location
+                Add Location Log
             </button>
         </div>
         <div v-if="error && status !== 'pending'" class="alert alert-error">
