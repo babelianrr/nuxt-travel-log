@@ -27,7 +27,7 @@ export async function findLocations(userId: number) {
 }
 
 export async function findLocationByName(existing: InsertLocation, userId: number) {
-    return await db.query.location.findFirst({
+    return db.query.location.findFirst({
         where: and(
             eq(location.name, existing.name),
             eq(location.userId, userId),
@@ -67,4 +67,16 @@ export async function insertLocation(
         userId,
     }).returning();
     return created;
+}
+
+export async function updateLocationBySlug(
+    updates: InsertLocation,
+    slug: string,
+    userId: number,
+) {
+    const [updated] = await db.update(location).set(updates).where(and(
+        eq(location.slug, slug),
+        eq(location.userId, userId),
+    )).returning();
+    return updated;
 }

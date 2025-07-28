@@ -3,7 +3,7 @@ import { int, real, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 import { z } from "zod";
 
 import { user } from "./auth-schema";
-import { locationLog } from "./location-log";
+import { locationLog, type SelectLocationLog } from "./location-log";
 
 export const location = sqliteTable("location", {
     id: int().primaryKey({ autoIncrement: true }),
@@ -32,3 +32,6 @@ export const InsertLocation = z.object({
 
 export type InsertLocation = z.infer<typeof InsertLocation>;
 export type SelectLocation = typeof location.$inferSelect;
+export type SelectLocationWithLogs = SelectLocation & {
+    locationLogs: SelectLocationLog[];
+};
