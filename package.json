@@ -40,7 +40,8 @@
     },
     "optionalDependencies": {
         "@oxc-parser/binding-linux-x64-gnu": "^0.78.0",
-        "@rollup/rollup-linux-x64-gnu": "^4.46.1"
+        "@rollup/rollup-linux-x64-gnu": "^4.46.1",
+        "lightningcss-linux-x64-gnu": "^1.30.1"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^4.14.1",
