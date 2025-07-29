@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { InsertLocation, InsertLocationInitialValues } from "../../../../lib/db/schema";
+import type { InsertLocation } from "../../../../lib/db/schema";
 
 const route = useRoute();
 const locationStore = useLocationStore();
@@ -33,10 +33,11 @@ function onSubmitComplete() {
             </p>
         </div>
         <LocationForm
-            v-if="locationStore.currentLocationStatus !== 'pending'"
+            v-if="locationStore.currentLocationStatus !== 'pending' && locationStore.currentLocation"
+            :zoom="8"
             :on-submit
             :on-submit-complete
-            :initial-values="locationStore.currentLocation as InsertLocationInitialValues"
+            :initial-values="locationStore.currentLocation"
             submit-label="Update"
             submit-icon="tabler:map-pin-up"
         />
