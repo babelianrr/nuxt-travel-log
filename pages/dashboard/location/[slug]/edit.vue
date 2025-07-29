@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { InsertLocation } from "../../../../lib/db/schema";
+import type { InsertLocation, InsertLocationInitialValues } from "../../../../lib/db/schema";
 
 const route = useRoute();
 const locationStore = useLocationStore();
