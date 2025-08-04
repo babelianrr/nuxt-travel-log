@@ -7,7 +7,7 @@ import { CENTER_JKT } from "../lib/constants";
 export const useMapStore = defineStore("useMapStore", () => {
     const mapPoints = ref<MapPoint[]>([]);
     const selectedPoint = ref<MapPoint | null>(null);
-    const addedPoint = ref<MapPoint & { centerMap?: boolean } | null>(null);
+    const addedPoint = ref<MapPoint & { centerMap?: boolean; zoom?: number } | null>(null);
 
     async function init() {
         const { useMap } = await import("@indoorequal/vue-maplibre-gl");
@@ -45,7 +45,7 @@ export const useMapStore = defineStore("useMapStore", () => {
                 map.map?.flyTo({
                     center: [newValue.long, newValue.lat],
                     speed: 1,
-                    zoom: 8,
+                    zoom: newValue.zoom || 8,
                 });
             }
         }, {

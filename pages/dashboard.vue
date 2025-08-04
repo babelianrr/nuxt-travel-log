@@ -73,7 +73,7 @@ effect(() => {
                         slug: route.params.slug,
                     },
                 },
-                icon: "tabler:circle-plus-filled",
+                icon: "tabler:map-pin-plus",
             });
         }
     }

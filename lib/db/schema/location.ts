@@ -1,7 +1,10 @@
+import type { z } from "zod";
+
 import { relations } from "drizzle-orm";
 import { int, real, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
-import { z } from "zod";
+import { createInsertSchema } from "drizzle-zod";
 
+import { DescriptionSchema, LatSchema, LongSchema, NameSchema } from "../../../lib/zod-schemas";
 import { user } from "./auth-schema";
 import { locationLog, type SelectLocationLog } from "./location-log";
 
@@ -23,11 +26,17 @@ export const locationRelations = relations(location, ({ many }) => ({
     locationLogs: many(locationLog),
 }));
 
-export const InsertLocation = z.object({
-    name: z.string().trim().min(1).max(100),
-    description: z.string().trim().max(1000).optional(),
-    lat: z.number().min(-90).max(90),
-    long: z.number().min(-180).max(180),
+export const InsertLocation = createInsertSchema(location, {
+    name: NameSchema,
+    description: DescriptionSchema,
+    lat: LatSchema,
+    long: LongSchema,
+}).omit({
+    id: true,
+    slug: true,
+    userId: true,
+    createdAt: true,
+    updatedAt: true,
 });
 
 export type InsertLocation = z.infer<typeof InsertLocation>;
