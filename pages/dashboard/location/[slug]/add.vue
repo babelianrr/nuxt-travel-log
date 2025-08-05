@@ -31,7 +31,7 @@ function submitComplete() {
     </h2>
     <!-- eslint-disable vue/no-multiple-template-root -->
     <LocationLogForm
-        submit-label="Add Location Log"
+        submit-label="Save"
         submit-icon="tabler:map-pin-plus"
         :on-submit="onSubmit"
         :on-submit-complete="submitComplete"
