@@ -56,8 +56,8 @@ export default defineNuxtConfig({
 
     sentry: {
         sourceMapsUploadOptions: {
-            org: "pt-aplus-pacific",
-            project: "javascript-nuxt",
+            org: import.meta.env.SENTRY_ORG,
+            project: import.meta.env.SENTRY_PROJECT,
         },
 
         autoInjectServerSentry: "top-level-import",
