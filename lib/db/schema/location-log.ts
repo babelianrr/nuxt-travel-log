@@ -6,6 +6,7 @@ import { z } from "zod";
 import { DateSchema, DescriptionSchema, LatSchema, LongSchema, NameSchema } from "../../../lib/zod-schemas";
 import { user } from "./auth-schema";
 import { location } from "./location";
+import { locationLogImage, type SelectLocationLogImage } from "./location-log-image";
 
 export const locationLog = sqliteTable("locationLog", {
     id: int().primaryKey({ autoIncrement: true }),
@@ -21,11 +22,12 @@ export const locationLog = sqliteTable("locationLog", {
     updatedAt: int().notNull().$default(() => Date.now()).$onUpdate(() => Date.now()),
 });
 
-export const locationLogRelations = relations(locationLog, ({ one }) => ({
+export const locationLogRelations = relations(locationLog, ({ one, many }) => ({
     location: one(location, {
         fields: [locationLog.locationId],
         references: [location.id],
     }),
+    images: many(locationLogImage),
 }));
 
 export const InsertLocationLog = createInsertSchema(locationLog, {
@@ -58,3 +60,6 @@ export const InsertLocationLog = createInsertSchema(locationLog, {
 
 export type InsertLocationLog = z.infer<typeof InsertLocationLog>;
 export type SelectLocationLog = typeof locationLog.$inferSelect;
+export type SelectLocationLogWithImages = SelectLocationLog & {
+    images: SelectLocationLogImage[];
+};
