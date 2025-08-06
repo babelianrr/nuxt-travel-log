@@ -1,7 +1,8 @@
 {
-    "name": "ways-travel-log",
+    "name": "ways-logs",
     "type": "module",
     "private": true,
+    "author": "thebabelian@gmail.com",
     "license": "MIT",
     "scripts": {
         "build": "nuxt build",
