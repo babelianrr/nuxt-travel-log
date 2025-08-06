@@ -31,3 +31,5 @@ local.db*
 
 # Docker data
 docker-data/
+# Sentry Config File
+.env.sentry-build-plugin

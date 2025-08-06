@@ -17,10 +17,10 @@ export default defineAuthenticatedEventHandler(async (event) => {
     const locationExist = await findLocationByName(result.data, event.context.user.id);
 
     if (locationExist) {
-        return sendError(event, createError({
+        throw createError({
             statusCode: 409,
             statusMessage: `Location '${result.data.name}' is already exist.`,
-        }));
+        });
     }
 
     const slug = await findUniqueSlug(slugify(result.data.name));
@@ -33,10 +33,10 @@ export default defineAuthenticatedEventHandler(async (event) => {
         // eslint-disable-next-line no-console
         console.log("INSERT ERROR", error.message);
         if (error.message.includes(`Failed query`)) {
-            return sendError(event, createError({
+            throw createError({
                 statusCode: 409,
                 statusMessage: "Slug must be unique (the location name is used to generate the slug).",
-            }));
+            });
         }
         throw error;
     }
