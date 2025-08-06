@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { MapPoint } from "~/lib/types";
+import type { MapPoint } from "../lib/types";
 
 const props = defineProps<{
     mapPoint: MapPoint;

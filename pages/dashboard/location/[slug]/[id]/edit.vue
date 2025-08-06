@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { InsertLocationLog } from "~/lib/db/schema";
+import type { InsertLocationLog } from "../../../../../lib/db/schema";
 
 const route = useRoute();
 const locationStore = useLocationStore();
