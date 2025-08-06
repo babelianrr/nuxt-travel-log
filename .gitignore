@@ -28,3 +28,6 @@ local.db*
 
 # Chrome Devtools
 .well-known
+
+# Docker data
+docker-data/
