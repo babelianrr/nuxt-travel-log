@@ -7,10 +7,10 @@ const authStore = useAuthStore();
         <div class="hero-content text-center min-h-96">
             <div class="max-w-md">
                 <h1 class="text-5xl font-bold">
-                    Travel Log
+                    Ways Logs
                 </h1>
                 <p class="py-6">
-                    Keep track of your travels and adventures. Add locations, photos, and notes to create a digital journal of your journeys.
+                    Keep track of your travels and adventures. Add locations, photos, and notes to create a digital journal of your journeys. <em>Log the journey your way.</em>
                 </p>
                 <AuthButton v-if="!authStore.user" />
                 <NuxtLink
