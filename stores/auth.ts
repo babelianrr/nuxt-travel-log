@@ -13,12 +13,26 @@ export const useAuthStore = defineStore("useAuthStore", () => {
     const user = computed(() => session.value?.data?.user);
     const loading = computed(() => session?.value?.isPending);
 
-    async function signIn() {
+    async function signInGitHub() {
         const { csrf } = useCsrf();
         const headers = new Headers();
         headers.append("csrf-token", csrf);
         await authClient.signIn.social({
             provider: "github",
+            callbackURL: "/dashboard",
+            errorCallbackURL: "/error",
+            fetchOptions: {
+                headers,
+            },
+        });
+    }
+
+    async function signInGoogle() {
+        const { csrf } = useCsrf();
+        const headers = new Headers();
+        headers.append("csrf-token", csrf);
+        await authClient.signIn.social({
+            provider: "google",
             callbackURL: "/dashboard",
             errorCallbackURL: "/error",
             fetchOptions: {
@@ -42,7 +56,8 @@ export const useAuthStore = defineStore("useAuthStore", () => {
     return {
         init,
         loading,
-        signIn,
+        signInGitHub,
+        signInGoogle,
         signOut,
         user,
     };

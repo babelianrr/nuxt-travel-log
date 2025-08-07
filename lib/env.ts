@@ -10,6 +10,8 @@ const EnvSchema = z.object({
     BETTER_AUTH_URL: z.string(),
     GH_CLIENT_ID: z.string(),
     GH_CLIENT_SECRET: z.string(),
+    GO_CLIENT_ID: z.string(),
+    GO_CLIENT_SECRET: z.string(),
     S3_ENDPOINT: z.string(),
     S3_ACCESS_KEY: z.string(),
     S3_ACCESS_SECRET: z.string(),
