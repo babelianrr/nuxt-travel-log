@@ -36,5 +36,11 @@ export const auth = betterAuth({
             clientId: env.GH_CLIENT_ID,
             clientSecret: env.GH_CLIENT_SECRET,
         },
+        google: {
+            accessType: "offline",
+            clientId: env.GO_CLIENT_ID,
+            clientSecret: env.GO_CLIENT_SECRET,
+            prompt: "select_account",
+        },
     },
 });

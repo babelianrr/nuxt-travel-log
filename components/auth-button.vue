@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const authStore = useAuthStore();
+const route = useRoute();
 </script>
 
 <template>
@@ -16,7 +17,7 @@ const authStore = useAuthStore();
             </div>
             {{ authStore.user.name }}
         </div>
-        <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm">
+        <ul tabindex="1" class="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm">
             <li>
                 <NuxtLink to="/sign-out">
                     <Icon name="tabler:logout-2" size="16" />
@@ -25,18 +26,12 @@ const authStore = useAuthStore();
             </li>
         </ul>
     </div>
-    <button
-        v-else
-        :disabled="authStore.loading"
+    <NuxtLink
+        v-else-if="!authStore.loading && !authStore.user && route.name !== 'sign-in'"
         class="btn btn-accent"
-        @click="authStore.signIn"
+        to="/sign-in"
     >
-        Sign In with GitHub
-        <span v-if="authStore.loading" class="loading loading-spinner loading-md" />
-        <Icon
-            v-else
-            name="tabler:brand-github"
-            size="24"
-        />
-    </button>
+        <Icon name="tabler:login-2" size="24" />
+        Sign In
+    </NuxtLink>
 </template>
